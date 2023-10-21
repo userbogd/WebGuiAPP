@@ -175,6 +175,9 @@ esp_err_t WebGuiAppInit(void)
 #endif
 
 
+#if CONFIG_BT_ENABLED
+BtStart();
+#endif
     return ESP_OK;
 }
 

@@ -9,6 +9,10 @@ if(CONFIG_WEBGUIAPP_GPRS_ENABLE)
  set(gprs_SRCS  "src/GSMTransport.c")
 endif()
 
+if(CONFIG_BT_ENABLED)
+ set(ble_SRCS  "src/BLE.c")
+endif()
+
 idf_component_register( 
     SRCS "src/SysConfiguration.c"
     	 "src/romfs.c"
@@ -31,6 +35,7 @@ idf_component_register(
     	  src/RestApiHandler.c
     	  src/SysComm.c
     	  src/SysErr.c
+    	  ${ble_SRCS}
     	  ${lora_SRCS}
     	  ${gprs_SRCS}
     	  ${jreadwrite_SRCS}
@@ -55,9 +60,11 @@ idf_component_register(
 			 esp_wifi
 			 esp_http_server
 			 esp_eth
+			 bt
 			 esp_cron
 			 esp_modem
 			 ttn-esp32
+			 
 			
 			 
 	PRIV_REQUIRES ${libespfs_PRIV_REQUIRES}

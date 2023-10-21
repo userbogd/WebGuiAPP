@@ -70,6 +70,9 @@ void WiFiStartAPTemp(int seconds);
 int GetAPClientsNumber();
 void EthStart(void);
 
+void BtStart(void);
+
+
 void WiFiTransportTask(void *prm);
 
 
